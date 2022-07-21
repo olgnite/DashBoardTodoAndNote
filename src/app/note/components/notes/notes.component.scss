@@ -1,0 +1,72 @@
+.notes-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  background-color: blueviolet;
+}
+
+.note-card-content {
+  margin-top: 7px;
+}
+
+
+
+app-note-card {
+  display: block;
+  margin-bottom: 15px;
+}
+
+
+.note-card {
+  background-color: rgba(black, 0.5);
+  color: rgba(white, 0.95);
+
+  border-radius: 4px;
+
+  padding: 25px;
+
+  transition: 0.1s;
+
+  &:hover {
+    background-color: rgba(black, 0.68);
+    backdrop-filter: blur(2px);
+  }
+}
+
+.note-card-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  margin: -25px;
+  margin-left: 15px;
+
+  padding: 12px 22px;
+  background: rgba(black, 0.7);
+
+  text-decoration: none;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(black, 0.78);
+    backdrop-filter: blur(2px);
+  }
+
+  &:active {
+    background: rgba(black, 0.85);
+  }
+
+}
+
