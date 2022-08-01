@@ -1,9 +1,8 @@
+import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {NoteService} from '../../../shared/services/note.service';
 import {Note} from "../../../shared/interfaces/note.interface";
-import {Router} from '@angular/router';
-
+import {NoteService} from 'src/app/shared/services/note.service';
 
 @Component({
 	selector: 'app-add-note',
@@ -11,12 +10,11 @@ import {Router} from '@angular/router';
 	styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
-
 	public form: FormGroup;
 
 	constructor(
 		private noteService: NoteService,
-		private router: Router
+		private router: Router,
 	) {
 	}
 

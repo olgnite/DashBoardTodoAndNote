@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TodoService} from "../../../shared/services/todo.service";
 import {Todo} from "../../../shared/interfaces/todo.interface";
+import { Week } from 'src/app/shared/interfaces/week.interface';
 
 @Component({
 	selector: 'app-todos',
@@ -9,9 +10,10 @@ import {Todo} from "../../../shared/interfaces/todo.interface";
 })
 export class TodosComponent implements OnInit {
 	public todos: Todo[] = [];
+    public days: string = '';
 
 	constructor(
-		private todosService: TodoService,
+		public todosService: TodoService,
 	) {
 	}
 
@@ -24,6 +26,9 @@ export class TodosComponent implements OnInit {
 				console.log("Page is empty", err)
 			}
 		)
+
+        this.days = this.todosService.days;
+
 	}
 
 	public remove(id: string = ''): void {

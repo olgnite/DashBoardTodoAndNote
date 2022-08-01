@@ -1,13 +1,15 @@
 <div class="app-wrapper">
-  <div class="top-section">
-    <h1>{{ dateTime | date: 'HH:mm' }}</h1>
-    <h2>{{ dateTime | date: 'd MMMM y'}}</h2>
-  </div>
-  <div class="content-section">
-    <router-outlet></router-outlet>
-  </div>
+    <div class="top-section">
+        <div>
+            <h1>{{ dateTime | date: "h:mm:ss a" }}</h1>
+            <h2>{{ dateTime | date: "MMM d - y" }}</h2>
+        </div>
+    </div>
+    <div class="content-section">
+        <router-outlet></router-outlet>
+    </div>
 
-  <div class="bottom-section">
-    <app-tabs></app-tabs>
-  </div>
+    <div class="bottom-section">
+        <app-tabs></app-tabs>
+    </div>
 </div>

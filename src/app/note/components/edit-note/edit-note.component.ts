@@ -30,14 +30,18 @@ export class EditNoteComponent implements OnInit, OnDestroy {
 				switchMap((params: Params) => {
 					this.id = params['id'];
 					return this.noteService.getById(params['id']);
+
 				})
 			).subscribe((note: Note) => {
-			this.note = note;
-			this.editForm = new FormGroup({
-				title: new FormControl(note.title, Validators.required),
-				content: new FormControl(note.content, Validators.required)
+				this.note = note;
+				this.editForm = new FormGroup({
+					title: new FormControl(note.title, Validators.required),
+					content: new FormControl(note.content, Validators.required)
+				})
+			},
+			(error) => {
+				console.log(error);
 			})
-		})
 	}
 
 	public ngOnDestroy(): void {

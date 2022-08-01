@@ -8,8 +8,14 @@
       placeholder="Введите название заметка..."
       formControlName="title"
     />
-    <div class="control-error" *ngIf="form.invalid && form.controls['title'].errors?.['required']">
-      <small class="error" *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched">
+    <div
+      class="control-error"
+      *ngIf="form.invalid && form.controls['title'].errors?.['required']"
+    >
+      <small
+        class="error"
+        *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
+      >
         Введите пожалуйста название заметки!
       </small>
     </div>
@@ -20,7 +26,10 @@
       formControlName="content"
     ></textarea>
     <div class="control-error">
-      <small class="error" *ngIf="form.controls['content'].errors?.['required'] && form.controls['content'].touched">
+      <small
+        class="error"
+        *ngIf="form.controls['content'].errors?.['required'] && form.controls['content'].touched"
+      >
         Введите пожалуйста текст заметки!
       </small>
     </div>
@@ -32,7 +41,8 @@
         type="submit"
         class="btn align-end"
         [disabled]="form.invalid"
-      >Создать Заметку
+      >
+        Создать Заметку
       </button>
     </div>
   </form>
