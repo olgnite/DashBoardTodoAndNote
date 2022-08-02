@@ -48,8 +48,4 @@ export class TodoService {
         return this.http.delete<Todo>(`${environment.baseUrl}/todos/${id}.json`)
     }
 
-    public getValueDay(value: string): void {
-        this.days = value;
-    }
-
 }

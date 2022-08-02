@@ -1,13 +1,9 @@
 <form (ngSubmit)="submit()" [formGroup]="todoForm">
     <div class="add-note-wrapper container has-blurred-white-bg">
         <h2 class="is-bold">Новая Задача</h2>
-        <select
-            class="select-box"
-            (change)="valueDay($event)"
-            formControlName="day"
-        >
+        <select class="select-box" formControlName="day">
             <option value="">Выберите день недели</option>
-            <option [value]="d.day" *ngFor="let d of days">{{ d.day }}</option>
+            <option *ngFor="let d of days" [value]="d.day">{{ d.day }}</option>
         </select>
         <br />
         <input

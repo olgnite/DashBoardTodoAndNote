@@ -23,7 +23,7 @@ export class AddTodoComponent implements OnInit {
         { day: "Суббота" },
         { day: "Воскресенье" },
     ];
-    
+
     constructor(
         private todoService: TodoService,
         private router: Router
@@ -49,10 +49,5 @@ export class AddTodoComponent implements OnInit {
                 this.router.navigate(['todos']);
             }
         )
-    }
-
-    public valueDay(event: any): void {
-        this.todoService.getValueDay(event.target.value)
-        console.log(event.target.value);
     }
 }

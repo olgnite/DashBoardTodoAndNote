@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TodoService } from "../../../shared/services/todo.service";
 import { Todo } from "../../../shared/interfaces/todo.interface";
+import { NoteService } from 'src/app/shared/services/note.service';
 
 @Component({
     selector: 'app-todos',
