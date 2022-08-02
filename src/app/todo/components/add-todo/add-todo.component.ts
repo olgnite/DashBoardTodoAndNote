@@ -23,7 +23,7 @@ export class AddTodoComponent implements OnInit {
         { day: "Суббота" },
         { day: "Воскресенье" },
     ];
-
+    
     constructor(
         private todoService: TodoService,
         private router: Router

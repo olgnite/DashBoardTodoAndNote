@@ -1,39 +1,43 @@
 <form (ngSubmit)="submit()" [formGroup]="todoForm">
-  <div class="add-note-wrapper container has-blurred-white-bg">
-    <h2 class="is-bold">Новая Задача</h2>
-    <select class="select-box" (change)="valueDay($event)" formControlName="day">
-      <option>Выберите день недели</option>
-      <option [value]="d.day" *ngFor="let d of days">{{ d.day }}</option>
-    </select>
-    <br/>
-    <input
-      class="textbox"
-      type="text"
-      placeholder="Введите название задачи..."
-      formControlName="text"
-    />
-    <div
-      class="control-error"
-      *ngIf="todoForm.invalid && todoForm.controls['text'].errors?.['required']"
-    >
-      <small
-        class="error"
-        *ngIf="todoForm.controls['text'].errors?.['required'] && todoForm.controls['text'].touched"
-      >
-        Введите пожалуйста название задачи!
-      </small>
-    </div>
-    <br/>
+    <div class="add-note-wrapper container has-blurred-white-bg">
+        <h2 class="is-bold">Новая Задача</h2>
+        <select
+            class="select-box"
+            (change)="valueDay($event)"
+            formControlName="day"
+        >
+            <option value="">Выберите день недели</option>
+            <option [value]="d.day" *ngFor="let d of days">{{ d.day }}</option>
+        </select>
+        <br />
+        <input
+            class="textbox"
+            type="text"
+            placeholder="Введите название задачи..."
+            formControlName="text"
+        />
+        <div
+            class="control-error"
+            *ngIf="todoForm.invalid && todoForm.controls['text'].errors?.['required']"
+        >
+            <small
+                class="error"
+                *ngIf="todoForm.controls['text'].errors?.['required'] && todoForm.controls['text'].touched"
+            >
+                Введите пожалуйста название задачи!
+            </small>
+        </div>
+        <br />
 
-    <div class="btns-container">
-      <a routerLink="../" class="btn">Назад</a>
-      <button
-        type="submit"
-        class="btn align-end"
-        [disabled]="todoForm.invalid"
-      >
-        Создать Задачу
-      </button>
+        <div class="btns-container">
+            <a routerLink="../" class="btn">Назад</a>
+            <button
+                type="submit"
+                class="btn align-end"
+                [disabled]="todoForm.invalid"
+            >
+                Создать Задачу
+            </button>
+        </div>
     </div>
-  </div>
 </form>
