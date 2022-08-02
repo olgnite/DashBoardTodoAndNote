@@ -1,49 +1,48 @@
 <div class="add-note-wrapper container has-blurred-white-bg">
-  <h2 class="is-bold">Новая Заметка</h2>
+    <h2 class="is-bold">Новая Заметка</h2>
+    <form (ngSubmit)="submit()" [formGroup]="form">
+        <input
+            class="textbox"
+            type="text"
+            placeholder="Введите название заметка..."
+            formControlName="title"
+        />
+        <div
+            class="control-error"
+            *ngIf="form.invalid && form.controls['title'].errors?.['required']"
+        >
+            <small
+                class="error"
+                *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
+            >
+                Введите пожалуйста название заметки!
+            </small>
+        </div>
+        <br />
+        <textarea
+            class="textarea"
+            placeholder="Введите текст заметки"
+            formControlName="content"
+        ></textarea>
+        <div class="control-error">
+            <small
+                class="error"
+                *ngIf="form.controls['content'].errors?.['required'] && form.controls['content'].touched"
+            >
+                Введите пожалуйста текст заметки!
+            </small>
+        </div>
+        <br />
 
-  <form (ngSubmit)="submit()" [formGroup]="form">
-    <input
-      class="textbox"
-      type="text"
-      placeholder="Введите название заметка..."
-      formControlName="title"
-    />
-    <div
-      class="control-error"
-      *ngIf="form.invalid && form.controls['title'].errors?.['required']"
-    >
-      <small
-        class="error"
-        *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched"
-      >
-        Введите пожалуйста название заметки!
-      </small>
-    </div>
-    <br/>
-    <textarea
-      class="textarea"
-      placeholder="Введите текст заметки"
-      formControlName="content"
-    ></textarea>
-    <div class="control-error">
-      <small
-        class="error"
-        *ngIf="form.controls['content'].errors?.['required'] && form.controls['content'].touched"
-      >
-        Введите пожалуйста текст заметки!
-      </small>
-    </div>
-    <br/>
-
-    <div class="btns-container">
-      <a routerLink="../" class="btn">Назад</a>
-      <button
-        type="submit"
-        class="btn align-end"
-        [disabled]="form.invalid"
-      >
-        Создать Заметку
-      </button>
-    </div>
-  </form>
+        <div class="btns-container">
+            <a routerLink="../" class="btn">Назад</a>
+            <button
+                type="submit"
+                class="btn align-end"
+                [disabled]="form.invalid"
+            >
+                Создать Заметку
+            </button>
+        </div>
+    </form>
 </div>

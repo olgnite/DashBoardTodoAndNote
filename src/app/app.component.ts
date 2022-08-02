@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, interval, Observable } from 'rxjs';
-import * as moment from "moment";
+import { Component, OnInit, } from '@angular/core';
+import { BehaviorSubject, interval, Observable, of, switchMap } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -9,11 +8,16 @@ import * as moment from "moment";
 })
 export class AppComponent implements OnInit {
     public dateTime: number;
+
     public ngOnInit(): void {
         interval(1000).subscribe(
             () => {
-                this.dateTime = Date.now()
+                this.dateTime = Date.now();
             }
         )
     }
+
 }
+
+
+

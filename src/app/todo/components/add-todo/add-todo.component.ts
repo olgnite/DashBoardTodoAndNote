@@ -5,7 +5,6 @@ import { Week } from 'src/app/shared/interfaces/week.interface';
 import { Todo } from '../../../shared/interfaces/todo.interface';
 import { TodoService } from "../../../shared/services/todo.service";
 
-
 @Component({
     selector: 'app-add-todo',
     templateUrl: './add-todo.component.html',
@@ -14,6 +13,7 @@ import { TodoService } from "../../../shared/services/todo.service";
 export class AddTodoComponent implements OnInit {
     public todoForm: FormGroup;
     public todo: Todo;
+
     public days: Week[] = [
         { day: "Понедельник" },
         { day: "Вторник" },
@@ -32,18 +32,21 @@ export class AddTodoComponent implements OnInit {
 
     public ngOnInit(): void {
         this.todoForm = new FormGroup({
-            text: new FormControl('', Validators.required)
+            text: new FormControl('', Validators.required),
+            day: new FormControl('', Validators.required)
         })
+
     }
 
     public submit(): void {
         this.todo = {
-            text: this.todoForm.controls['text'].value
+            text: this.todoForm.controls['text'].value,
+            day: this.todoForm.controls['day'].value
         }
         this.todoService.addTodo(this.todo).subscribe(
             () => {
-                alert('Задача добавлена!');
-                this.router.navigate(['todos'])
+                alert("Задача добавлена!");
+                this.router.navigate(['todos']);
             }
         )
     }
