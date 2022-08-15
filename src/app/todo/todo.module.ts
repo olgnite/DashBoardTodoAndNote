@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { TodoService } from "../shared/services/todo.service";
+import { CheckboxControlComponent } from './components/checkbox-control/checkbox-control.component';
 
 @NgModule({
     declarations: [
         AddTodoComponent,
-        TodosComponent
+        TodosComponent,
+        CheckboxControlComponent,
     ],
     imports: [
         ReactiveFormsModule,

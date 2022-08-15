@@ -31,12 +31,12 @@ export class NoteService {
 		return this.http.post<any>(`${environment.baseUrl}/notes.json`, note)
 			.pipe(
 				map((response: FbCreateResponse) => {
-						return {
-							...note,
-							id: response.name
-						}
+					return {
+						...note,
+						id: response.name
 					}
-				))
+				})
+			)
 	}
 
 	public update(note: Note): Observable<Note> {
@@ -56,7 +56,7 @@ export class NoteService {
 	}
 
 	public delete(id: string): Observable<Note> {
-		return this.http.delete<Note>(`${environment.baseUrl}/notes/${id}.json`);
+		return this.http.delete<Note>(`${environment.baseUrl}/notes/${id}.json`)
 	}
 
 }

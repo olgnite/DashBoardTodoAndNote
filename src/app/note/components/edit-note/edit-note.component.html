@@ -1,48 +1,48 @@
 <div class="edit-note-wrapper container has-blurred-white-bg">
-    <h2 class="is-bold">Редактировать задачу</h2>
-    <form (ngSubmit)="submit()" [formGroup]="editForm">
-        <input
-            class="textbox"
-            type="text"
-            placeholder="Введите название задачи..."
-            formControlName="title"
-        />
-        <div
-            class="control-error"
-            *ngIf="editForm.invalid && editForm.controls['title'].errors?.['required']"
-        >
-            <small
-                class="error"
-                *ngIf="editForm.controls['title'].errors?.['required'] && editForm.controls['title'].touched"
-            >
-                Введите пожалуйста название задачи!
-            </small>
-        </div>
-        <br />
-        <textarea
-            class="textarea"
-            placeholder="Введите текст задачи"
-            formControlName="content"
-        ></textarea>
-        <div class="control-error">
-            <small
-                class="error"
-                *ngIf="editForm.controls['content'].errors?.['required'] && editForm.controls['content'].touched"
-            >
-                Введите пожалуйста текст задачи!
-            </small>
-        </div>
-        <br />
+  <h2 class="is-bold">Редактировать задачу</h2>
+  <form (ngSubmit)="submit()" [formGroup]="editForm">
+    <input
+      class="textbox"
+      type="text"
+      placeholder="Введите название задачи..."
+      formControlName="title"
+    />
+    <div
+      class="control-error"
+      *ngIf="editForm.invalid && editForm.controls['title'].errors?.['required']"
+    >
+      <small
+        class="error"
+        *ngIf="editForm.controls['title'].errors?.['required'] && editForm.controls['title'].touched"
+      >
+        Введите пожалуйста название задачи!
+      </small>
+    </div>
+    <br/>
+    <textarea
+      class="textarea"
+      placeholder="Введите текст задачи"
+      formControlName="content"
+    ></textarea>
+    <div class="control-error">
+      <small
+        class="error"
+        *ngIf="editForm.controls['content'].errors?.['required'] && editForm.controls['content'].touched"
+      >
+        Введите пожалуйста текст задачи!
+      </small>
+    </div>
+    <br/>
 
-        <div class="btns-container">
-            <a routerLink="../" class="btn">Назад</a>
-            <button
-                type="submit"
-                class="btn align-end"
-                [disabled]="editForm.invalid"
-            >
-                Сохранить
-            </button>
-        </div>
-    </form>
+    <div class="btns-container">
+      <a routerLink="../" class="btn">Назад</a>
+      <button
+        type="submit"
+        class="btn align-end"
+        [disabled]="editForm.invalid"
+      >
+        Сохранить
+      </button>
+    </div>
+  </form>
 </div>

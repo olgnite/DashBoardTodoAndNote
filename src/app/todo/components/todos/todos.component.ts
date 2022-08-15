@@ -12,12 +12,12 @@ export class TodosComponent implements OnInit {
     public todos: Todo[] = [];
 
     constructor(
-        public todosService: TodoService,
+        public todoService: TodoService,
     ) {
     }
 
     public ngOnInit(): void {
-        this.todosService.getTodos().subscribe(
+        this.todoService.getTodos().subscribe(
             (todos: Todo[]) => {
                 this.todos = todos
             },
@@ -25,10 +25,11 @@ export class TodosComponent implements OnInit {
                 console.log("Page is empty", err)
             }
         )
+
     }
 
     public remove(id: string = ''): void {
-        this.todosService.delete(id).subscribe(
+        this.todoService.delete(id).subscribe(
             () => {
                 setTimeout(() => {
                     this.todos = this.todos.filter(t => t.id !== id);

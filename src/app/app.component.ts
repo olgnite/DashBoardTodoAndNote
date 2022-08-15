@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { BehaviorSubject, interval, Observable, of, switchMap } from 'rxjs';
+import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-root',

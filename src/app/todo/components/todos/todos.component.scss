@@ -77,7 +77,6 @@ app-todo-item {
 .todo-text,
 .check-box {
   transition: 0.12s;
-
 }
 
 .btns-container {
@@ -93,4 +92,18 @@ app-todo-item {
   .align-end {
     margin-left: auto;
   }
+}
+
+
+.container2 {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

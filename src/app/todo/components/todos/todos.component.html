@@ -1,18 +1,18 @@
 <div class="todos-wrapper">
-    <div class="container">
-        <div class="todo-item" *ngFor="let todo of todos">
-            <div class="check-box" (click)="remove(todo.id)">
-                <p class="icon-remove">&#10006;</p>
-            </div>
+  <div class="container">
+    <div class="todo-item" *ngFor="let todo of todos">
+      <div class="check-box" (click)="remove(todo.id)">
+        <p class="icon-remove">&#10006;</p>
+      </div>
 
-            <p class="todo-text" style="margin-right: 100px">{{ todo.text }}</p>
-            <p class="todo-text">{{ todo.day }}</p>
-        </div>
-
-        <div class="btns-container btns-centered">
-            <a [routerLink]="['add']" class="btn">
-                <i class="material-icons-outlined">add</i>
-            </a>
-        </div>
+      <p class="todo-text" style="margin-right: 100px">{{ todo.text }}</p>
+      <p class="todo-text" style="margin-right: 75px">{{ todo.day }}</p>
+      <app-checkbox-control></app-checkbox-control>
     </div>
+    <div class="btns-container btns-centered">
+      <a [routerLink]="['add']" class="btn">
+        <i class="material-icons-outlined">add</i>
+      </a>
+    </div>
+  </div>
 </div>
