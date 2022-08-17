@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TodoService } from "../../../shared/services/todo.service";
 import { Todo } from "../../../shared/interfaces/todo.interface";
 import { NoteService } from 'src/app/shared/services/note.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
     selector: 'app-todos',
@@ -13,6 +14,7 @@ export class TodosComponent implements OnInit {
 
     constructor(
         public todoService: TodoService,
+        private alertService: AlertService
     ) {
     }
 
@@ -33,6 +35,7 @@ export class TodosComponent implements OnInit {
             () => {
                 setTimeout(() => {
                     this.todos = this.todos.filter(t => t.id !== id);
+                    this.alertService.success('Задача удалена');
                 }, 2000)
             }
         )

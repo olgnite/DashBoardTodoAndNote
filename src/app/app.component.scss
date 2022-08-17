@@ -74,3 +74,37 @@
         transform: translateY(1px);
     }
 }
+
+.btn-login {
+    display: inline-flex;
+    align-items: center;
+    margin: -25px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+
+    padding: 12px 22px;
+    background: rgba(black, 0.7);
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: 600;
+    font-family: inherit;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(black, 0.78);
+      backdrop-filter: blur(2px);
+    }
+
+    &:active {
+      background: rgba(black, 0.85);
+    }
+
+  }

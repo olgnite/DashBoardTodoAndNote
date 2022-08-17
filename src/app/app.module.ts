@@ -6,11 +6,13 @@ import {AppComponent} from './app.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		TabsComponent,
+  AlertComponent,
 	],
 	imports: [
 		BrowserModule,

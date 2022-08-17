@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Note} from "../../../shared/interfaces/note.interface";
 import {NoteService} from 'src/app/shared/services/note.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
 	selector: 'app-add-note',
@@ -14,7 +15,8 @@ export class AddNoteComponent implements OnInit {
 
 	constructor(
 		private noteService: NoteService,
-		private router: Router
+		private router: Router,
+        private alertService: AlertService
 	) {
 	}
 
@@ -35,7 +37,7 @@ export class AddNoteComponent implements OnInit {
 		}
 		this.noteService.addNote(note).subscribe(() => {
 			this.form.reset();
-			alert('Заметка успешно создана!');
+			this.alertService.success('Заметка была успешна создана');
 			this.router.navigate(['/notes']);
 		})
 

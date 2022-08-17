@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
 import {Week} from 'src/app/shared/interfaces/week.interface';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import {Todo} from '../../../shared/interfaces/todo.interface';
 import {TodoService} from "../../../shared/services/todo.service";
 
@@ -25,7 +26,8 @@ export class AddTodoComponent implements OnInit {
 
 	constructor(
 		public todoService: TodoService,
-		private router: Router
+		private router: Router,
+        private alertService: AlertService
 	) {
 	}
 
@@ -44,7 +46,7 @@ export class AddTodoComponent implements OnInit {
 		}
 		this.todoService.addTodo(this.todo).subscribe(
 			() => {
-				alert("Задача добавлена!");
+				this.alertService.success('Задача была создана');
 				this.router.navigate(['todos']);
 			}
 		)

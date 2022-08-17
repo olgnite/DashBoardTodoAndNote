@@ -6,6 +6,7 @@ import {EditNoteComponent} from "./components/edit-note/edit-note.component";
 import {NotesComponent} from "./components/notes/notes.component";
 import {NoteService} from "../shared/services/note.service";
 import {CommonModule} from "@angular/common";
+import { AuthGuard } from "../shared/auth.guard";
 
 @NgModule({
 	declarations: [
@@ -17,14 +18,15 @@ import {CommonModule} from "@angular/common";
 		ReactiveFormsModule,
 		FormsModule,
 		RouterModule.forChild([
-			{path: 'notes', component: NotesComponent},
-			{path: 'notes/add', component: AddNoteComponent},
-			{path: 'notes/:id', component: EditNoteComponent}
+			{path: 'notes', component: NotesComponent, canActivate: [AuthGuard]},
+			{path: 'notes/add', component: AddNoteComponent, canActivate: [AuthGuard]},
+			{path: 'notes/:id', component: EditNoteComponent, canActivate: [AuthGuard]}
 		]),
 		CommonModule
 	],
 	exports: [RouterModule],
 	providers: [
+        AuthGuard,
 		NoteService
 	]
 })

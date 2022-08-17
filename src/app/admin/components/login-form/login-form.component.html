@@ -1,0 +1,62 @@
+<form (ngSubmit)="login()" [formGroup]="loginForm">
+    <div class="wrapper-login container has-blurred-white-bg">
+        <h2 class="is-bold">Авторизация</h2>
+        <label for="email">Email:</label>
+        <input
+            class="textbox-login"
+            type="text"
+            placeholder="Введите пожалуйста email"
+            formControlName="email"
+        />
+        <div
+            class="validation"
+            *ngIf="
+                loginForm.controls['email'].touched &&
+                loginForm.controls['email'].invalid
+            "
+        >
+            <small *ngIf="loginForm.controls['email'].errors['required']">
+                Введите email
+            </small>
+            <small *ngIf="loginForm.controls['email'].errors['email']">
+                Поле email введено неверно
+            </small>
+        </div>
+        <br />
+        <label for="password">Password:</label>
+        <input
+            type="password"
+            class="textbox-login"
+            formControlName="password"
+            placeholder="Введите пожалуйста пароль"
+        />
+        <div
+            class="validation"
+            *ngIf="
+                loginForm.controls['password'].touched &&
+                loginForm.controls['password'].invalid
+            "
+        >
+            <small *ngIf="loginForm.controls['password'].errors['required']">
+                Введите пароль
+            </small>
+            <small *ngIf="loginForm.controls['password'].errors['minlength']">
+                Пароль должен быть не менее 6 символов. Сейчас он
+                {{
+                    loginForm.controls["password"].errors["minlength"][
+                        "actualLength"
+                    ]
+                }}
+            </small>
+        </div>
+        <div class="btns-container">
+            <button
+                type="submit"
+                class="btn align-end"
+                [disabled]="loginForm.invalid"
+            >
+                Войти
+            </button>
+        </div>
+    </div>
+</form>

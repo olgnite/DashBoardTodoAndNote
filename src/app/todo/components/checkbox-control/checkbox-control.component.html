@@ -1,11 +1,16 @@
 <section>
-  <form [formGroup]="form">
-    <div>
-      <label class="container-check" *ngFor="let t of todos">
-        <input type="checkbox" formArrayName="completed" class="check-highload" [value]=t.id
-               (change)="onCheckboxChange($event)">
-        <span class="highload2"></span>
-      </label>
-    </div>
-  </form>
+    <form [formGroup]="form">
+        <div>
+            <label class="container-check" *ngFor="let t of todos">
+                <input
+                    type="checkbox"
+                    formArrayName="completed"
+                    class="check-highload"
+                    [value]="t.id"
+                    (change)="onCheckboxChange($event)"
+                />
+                <span class="highload2"></span>
+            </label>
+        </div>
+    </form>
 </section>
