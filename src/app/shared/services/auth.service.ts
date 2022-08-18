@@ -30,8 +30,8 @@ export class AuthService {
     public setSessionData(user: User): void {
         if (this.user.email === user.email && this.user.password.toString() === user.password) {
             sessionStorage.setItem(this.sessionToken, this.TOKEN.token);
-            this.router.navigate(['/todos']);
             this.alertService.success('Вы успешно зашли в систему');
+            this.router.navigate(['/todos']);
         } else {
             this.alertService.success('Такого пользователя не существует');
             this.router.navigate(['/login']);

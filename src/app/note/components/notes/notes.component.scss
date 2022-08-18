@@ -19,6 +19,8 @@ app-note-card {
 .note-card {
   background-color: rgba(black, 0.5);
   color: rgba(white, 0.95);
+  overflow-y: auto;
+  resize: vertical;
 
   border-radius: 4px;
 
@@ -70,3 +72,37 @@ app-note-card {
 
 }
 
+.textarea-card {
+    display: block;
+
+    font-size: 18px;
+    font-family: inherit;
+
+    border: 2px solid rgba(black, 0.3);
+    border-radius: 4px;
+
+    background-color: rgba(rgb(29, 205, 179), 0.9);
+
+    padding: 8px 10px;
+
+    width: 100%;
+
+    &:hover {
+        background: rgba(rgb(29, 205, 179), 0.9);
+    }
+
+    &:focus {
+        background: rgba(rgb(29, 205, 179), 0.9);;
+        outline: none;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: rgba(black, 0.42);
+    }
+}
+
+.textarea-card {
+    resize: vertical;
+    min-height: 100px;
+}
