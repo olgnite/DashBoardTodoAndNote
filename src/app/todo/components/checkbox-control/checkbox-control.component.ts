@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {TodoService} from "../../../shared/services/todo.service";
 import {ITodo} from "../../../shared/interfaces/todo.interface";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
 	selector: 'app-checkbox-control',
@@ -13,9 +13,12 @@ export class CheckboxControlComponent implements OnInit, OnDestroy {
 	public form: FormGroup;
 	public id: string | undefined = '';
 	public sub: Subscription;
-	public todos: ITodo[] = [];
+	public todos: ITodo[];
 
-	constructor(public formBuilder: FormBuilder, private todoService: TodoService) {
+	constructor(
+		public formBuilder: FormBuilder,
+		private todoService: TodoService
+	) {
 		this.form = formBuilder.group({
 			completed: new FormArray([])
 		})
@@ -44,5 +47,4 @@ export class CheckboxControlComponent implements OnInit, OnDestroy {
 			completedTodo.removeAt(index);
 		}
 	}
-
 }

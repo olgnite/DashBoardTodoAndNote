@@ -1,6 +1,6 @@
 <div class="notes-wrapper">
     <div class="container">
-        <div class="notes-list" *ngFor="let note of notes">
+        <div class="notes-list" *ngFor="let note of notes | async">
             <a [routerLink]="[note.id]">
                 <div class="note-card" style="margin: 15px">
                     <div class="note-card-title">{{ note.title }}</div>

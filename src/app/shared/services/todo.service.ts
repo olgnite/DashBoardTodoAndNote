@@ -26,7 +26,6 @@ export class TodoService {
 					}))
 				})
 			)
-
 	}
 
 	public addTodo(todo: ITodo): Observable<ITodo> {
