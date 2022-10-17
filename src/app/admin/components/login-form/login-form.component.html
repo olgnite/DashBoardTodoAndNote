@@ -18,8 +18,8 @@
             <small *ngIf="loginForm.controls['email'].errors['required']">
                 Введите email
             </small>
-            <small *ngIf="loginForm.controls['email'].errors['email']">
-                Поле email введено неверно
+            <small *ngIf="loginForm.controls['email'].errors['pattern']">
+                Поле email введено некорректно
             </small>
         </div>
         <br />

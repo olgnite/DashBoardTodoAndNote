@@ -1,40 +1,38 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {FbCreateResponse} from "../interfaces/note.interface";
+import {IFbCreateResponse} from "../interfaces/note.interface";
 import {map} from "rxjs/operators";
 import {HttpClient} from '@angular/common/http';
 import {environment} from "../../../environments/environment";
-import {Todo} from '../interfaces/todo.interface';
+import {ITodo} from '../interfaces/todo.interface';
 
 @Injectable()
 export class TodoService {
 	public days: string = '';
-	public todos: Todo[] = [];
+	public todos: ITodo[] = [];
 
 	constructor(
 		private http: HttpClient
 	) {
 	}
 
-	public getTodos(): Observable<Todo[]> {
-		return this.http.get<Todo[]>(`${environment.baseUrl}/todos.json`)
+	public getTodos(): Observable<ITodo[]> {
+		return this.http.get<ITodo[]>(`${environment.baseUrl}/todos.json`)
 			.pipe(
 				map((response: { [keys: string]: any }) => {
-					return Object
-						.keys(response)
-						.map(key => ({
-							...response[key],
-							id: key
-						}))
+					return Object.keys(response).map(key => ({
+						...response[key],
+						id: key
+					}))
 				})
 			)
 
 	}
 
-	public addTodo(todo: Todo): Observable<Todo> {
+	public addTodo(todo: ITodo): Observable<ITodo> {
 		return this.http.post<any>(`${environment.baseUrl}/todos.json`, todo)
 			.pipe(
-				map((response: FbCreateResponse) => {
+				map((response: IFbCreateResponse) => {
 					return {
 						...todo,
 						id: response.name
@@ -43,8 +41,8 @@ export class TodoService {
 			)
 	}
 
-	public delete(id: string): Observable<Todo> {
-		return this.http.delete<Todo>(`${environment.baseUrl}/todos/${id}.json`)
+	public delete(id: string): Observable<ITodo> {
+		return this.http.delete<ITodo>(`${environment.baseUrl}/todos/${id}.json`)
 	}
 
 }

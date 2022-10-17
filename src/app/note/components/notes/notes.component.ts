@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { Note } from '../../../shared/interfaces/note.interface';
+import { INote } from '../../../shared/interfaces/note.interface';
 import { NoteService } from '../../../shared/services/note.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { NoteService } from '../../../shared/services/note.service';
     styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-    public notes: Note[] = [];
+    public notes: INote[] = [];
 
     constructor(private noteService: NoteService, private alertService: AlertService) {
 
@@ -18,7 +18,7 @@ export class NotesComponent implements OnInit {
     public ngOnInit(): void {
         this.noteService.getNotes()
             .subscribe(
-                (notes: Note[]) => {
+                (notes: INote[]) => {
                     this.notes = notes;
                 }, (err) => {
                     console.log("Page is empty", err)

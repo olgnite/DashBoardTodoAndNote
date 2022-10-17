@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/shared/interfaces/user.interface';
-import { AlertService } from 'src/app/shared/services/alert.service';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -12,12 +11,20 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginFormComponent implements OnInit {
     public loginForm: FormGroup;
 
-    constructor(private auth: AuthService, private alertService: AlertService) { }
+    constructor(private auth: AuthService) { }
 
     public ngOnInit(): void {
         this.loginForm = new FormGroup({
-            email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', [Validators.required, Validators.minLength(6)])
+            email: new FormControl('',
+                [
+                    Validators.required,
+                    Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}')
+                ]),
+            password: new FormControl('',
+                [
+                    Validators.required,
+                    Validators.minLength(6)
+                ])
         })
     }
 
@@ -25,7 +32,7 @@ export class LoginFormComponent implements OnInit {
         if (this.loginForm.invalid) {
             return
         } else {
-            const user: User = {
+            const user: IUser = {
                 email: this.loginForm.controls['email'].value,
                 password: this.loginForm.controls['password'].value
             }

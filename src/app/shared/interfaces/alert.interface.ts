@@ -1,6 +1,6 @@
-export type AlertType = 'success' | 'warning' | 'danger';
+export type AlertType = 'success';
 
-export interface Alert {
+export interface IAlert {
 	type: AlertType,
 	text: string
 }

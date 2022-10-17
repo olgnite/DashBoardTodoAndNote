@@ -1,6 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../services/alert.service';
+import { IAlert } from "../interfaces/alert.interface";
+import { DELAY } from '../tokens/delayToken';
 
 @Component({
     selector: 'app-alert',
@@ -8,17 +10,19 @@ import { AlertService } from '../services/alert.service';
     styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit, OnDestroy {
-    @Input() delay = 5000;
+    public delay = this.delayToken;
     public text: string;
     public type: string = 'success';
     public aSub: Subscription;
 
-    constructor(private alertService: AlertService) {
-
+    constructor(
+        private alertService: AlertService,
+        @Inject(DELAY) protected readonly delayToken: number
+    ) {
     }
 
     public ngOnInit(): void {
-        this.aSub = this.alertService.alert$.subscribe(alert => {
+        this.aSub = this.alertService.alert$.subscribe((alert: IAlert) => {
             this.text = alert.text;
             const timeOut = setTimeout(() => {
                 clearTimeout(timeOut);

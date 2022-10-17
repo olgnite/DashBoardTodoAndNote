@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
-import {Week} from 'src/app/shared/interfaces/week.interface';
-import { AlertService } from 'src/app/shared/services/alert.service';
-import {Todo} from '../../../shared/interfaces/todo.interface';
+import {IWeek} from 'src/app/shared/interfaces/week.interface';
+import {AlertService} from 'src/app/shared/services/alert.service';
+import {ITodo} from '../../../shared/interfaces/todo.interface';
 import {TodoService} from "../../../shared/services/todo.service";
 
 @Component({
@@ -13,8 +13,8 @@ import {TodoService} from "../../../shared/services/todo.service";
 })
 export class AddTodoComponent implements OnInit {
 	public todoForm: FormGroup;
-	public todo: Todo;
-	public days: Week[] = [
+	public todo: ITodo;
+	public days: IWeek[] = [
 		{day: "Понедельник"},
 		{day: "Вторник"},
 		{day: "Среда"},
@@ -27,7 +27,7 @@ export class AddTodoComponent implements OnInit {
 	constructor(
 		public todoService: TodoService,
 		private router: Router,
-        private alertService: AlertService
+		private alertService: AlertService
 	) {
 	}
 

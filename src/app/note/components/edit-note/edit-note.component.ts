@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { NoteService } from '../../../shared/services/note.service';
-import { Note } from "../../../shared/interfaces/note.interface";
+import { INote } from "../../../shared/interfaces/note.interface";
 import { Subscription, switchMap } from 'rxjs';
 import { AlertService } from 'src/app/shared/services/alert.service';
 
@@ -17,7 +17,7 @@ export class EditNoteComponent implements OnInit, OnDestroy {
     public uSub: Subscription;
     public id: string;
     public editForm: FormGroup;
-    public note: Note;
+    public note: INote;
 
     constructor(
         private route: ActivatedRoute,
@@ -33,9 +33,8 @@ export class EditNoteComponent implements OnInit, OnDestroy {
                 switchMap((params: Params) => {
                     this.id = params['id'];
                     return this.noteService.getById(params['id']);
-
                 })
-            ).subscribe((note: Note) => {
+            ).subscribe((note: INote) => {
                 this.note = note;
                 this.editForm = new FormGroup({
                     title: new FormControl(note.title, Validators.required),

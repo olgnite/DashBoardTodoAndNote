@@ -1,9 +1,9 @@
 import { AdminService } from 'src/app/shared/services/admin.service';
-import { IJWTSession } from './../interfaces/jwtSession.interface';
+import { IJWTSession } from '../interfaces/jwtSession.interface';
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { User } from "../interfaces/user.interface";
 import { AlertService } from './alert.service';
+import { IUser } from '../interfaces/user.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +11,7 @@ import { AlertService } from './alert.service';
 export class AuthService {
     public sessionToken = 'session';
     public TOKEN: IJWTSession;
-    public user: User;
+    public user: IUser;
 
     constructor(
         private router: Router,
@@ -19,7 +19,7 @@ export class AuthService {
         private alertService: AlertService
     ) {
         this.admin.getAdminUser()
-            .subscribe((user) => {
+            .subscribe((user: IUser[]) => {
                 this.user = user[0];
                 this.TOKEN = {
                     token: this.user.id
@@ -27,11 +27,11 @@ export class AuthService {
             })
     }
 
-    public setSessionData(user: User): void {
+    public setSessionData(user: IUser): void {
         if (this.user.email === user.email && this.user.password.toString() === user.password) {
             sessionStorage.setItem(this.sessionToken, this.TOKEN.token);
-            this.alertService.success('Вы успешно зашли в систему');
             this.router.navigate(['/todos']);
+            this.alertService.success('Вы успешно зашли в систему');
         } else {
             this.alertService.success('Такого пользователя не существует');
             this.router.navigate(['/login']);
@@ -47,5 +47,7 @@ export class AuthService {
         return null;
 
     }
-
 }
+
+
+

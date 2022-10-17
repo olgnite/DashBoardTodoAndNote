@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TodoService } from "../../../shared/services/todo.service";
-import { Todo } from "../../../shared/interfaces/todo.interface";
+import { ITodo } from "../../../shared/interfaces/todo.interface";
 import { NoteService } from 'src/app/shared/services/note.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 
@@ -10,7 +10,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
     styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-    public todos: Todo[] = [];
+    public todos: ITodo[] = [];
 
     constructor(
         public todoService: TodoService,
@@ -20,7 +20,7 @@ export class TodosComponent implements OnInit {
 
     public ngOnInit(): void {
         this.todoService.getTodos().subscribe(
-            (todos: Todo[]) => {
+            (todos: ITodo[]) => {
                 this.todos = todos
             },
             (err) => {

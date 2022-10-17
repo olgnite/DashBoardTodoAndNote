@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Note} from "../../../shared/interfaces/note.interface";
+import {INote} from "../../../shared/interfaces/note.interface";
 import {NoteService} from 'src/app/shared/services/note.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 
@@ -31,7 +31,7 @@ export class AddNoteComponent implements OnInit {
 		if (this.form.invalid) {
 			return
 		}
-		const note: Note = {
+		const note: INote = {
 			title: this.form.controls['title'].value,
 			content: this.form.controls['content'].value,
 		}
